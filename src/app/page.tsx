@@ -1,19 +1,17 @@
+import { Logout } from "@/components/Logout";
 import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
 export default async function Home() {
   const supabase = await createClient();
-  const { data, error } = await supabase.auth.getSession();
-  console.log(data, error?.message);
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+  console.log(user);
   return (
     <div>
       <h1>Home</h1>
-      {data ? (
-        <div>
-          <Link href="/login">login</Link>
-        </div>
-      ) : (
-        data
-      )}
+      {user ? <Logout /> : <Link href="/login">login</Link>}
     </div>
   );
 }

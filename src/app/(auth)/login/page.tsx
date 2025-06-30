@@ -1,27 +1,137 @@
-import { signin, signup } from "../actions";
+"use client";
+import Link from "next/link";
+import { signin, FormState } from "../actions";
+import { Eye, EyeClosed, Mail, Lock, LoaderCircle } from "lucide-react";
+import { useState, useActionState } from "react";
+
 export default function Login() {
+  const initialState: FormState = {
+    errors: {},
+  };
+  const [showPassword, setShowPassword] = useState(false);
+  const [state, formAction, isPending] = useActionState(signin, initialState);
+  const [formState, setFormState] = useState({
+    email: "",
+    password: "",
+  });
+  const [formError, setFormError] = useState({
+    email: "",
+    password: "",
+    submit: true,
+  });
+  function validateEmail() {
+    if (!formState.email) {
+      setFormError({ ...formError, email: "Email is required", submit: false });
+    } else if (!formState.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      setFormError({ ...formError, email: "Enter valid email", submit: false });
+    } else {
+      setFormError({ ...formError, email: "", submit: true });
+    }
+  }
+  function validatePassword() {
+    if (!formState.password) {
+      setFormError({
+        ...formError,
+        password: "Password is required",
+        submit: false,
+      });
+    } else {
+      setFormError({ ...formError, password: "", submit: true });
+    }
+  }
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-3xl font-bold text-gray-800">Sign Up</h1>
-      <form>
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-        />
-        <button type="submit" formAction={signin}>
-          Sign In
+    <div className="flex flex-col items-center justify-center h-screen container mx-auto">
+      <form
+        action={formAction}
+        className="flex flex-col gap-5 items-center p-4 rounded-md w-11/12 sm:w-2/3   lg:w-2/5 shadow-lg"
+      >
+        <h1 className="text-3xl font-bold text-gray-800">Sign In</h1>
+        <p
+          className={`text-red-500 bg-red-100 w-full text-center p-2 rounded-md ${
+            state.errors.message ? "" : "hidden"
+          }`}
+        >
+          {state.errors.message}
+        </p>
+        <div className="w-full">
+          <label htmlFor="email">Email</label>
+          <div className="flex justify-between items-center relative">
+            <Mail className="size-5 text-gray-500 absolute left-2" />
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Email"
+              className={`w-full px-8 py-2 border border-gray-300 rounded-md outline-none ${
+                formError.email && `border-red-500`
+              }`}
+              value={formState.email}
+              onChange={(e) =>
+                setFormState({ ...formState, email: e.target.value })
+              }
+              onBlur={validateEmail}
+            />
+          </div>
+          <p className="text-red-500">{formError.email}</p>
+        </div>
+        <div className="w-full">
+          <label htmlFor="password">Password</label>
+          <div className="flex justify-between items-center relative">
+            <Lock className="size-5 text-gray-500 absolute left-2" />
+            <input
+              id="password"
+              name="password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              className={`w-full px-8 py-2 border border-gray-300 rounded-md outline-none ${
+                formError.password && `border-red-500`
+              }`}
+              value={formState.password}
+              onChange={(e) =>
+                setFormState({ ...formState, password: e.target.value })
+              }
+              onBlur={validatePassword}
+            />
+            {showPassword ? (
+              <EyeClosed
+                className="size-5 text-gray-500 absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer"
+                onClick={() => setShowPassword(!showPassword)}
+              />
+            ) : (
+              <Eye
+                className="size-5 text-gray-500 absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer"
+                onClick={() => setShowPassword(!showPassword)}
+              />
+            )}
+          </div>
+          <p className="text-red-500">{formError.password}</p>
+        </div>
+        <Link
+          href="/reset-password"
+          className="text-blue-700 self-end mr-1 font-semibold hover:text-blue-500 transition-colors"
+        >
+          Forgot your password?
+        </Link>
+        <button
+          disabled={!formError.submit || isPending}
+          type="submit"
+          className="text-white bg-blue-700 w-full rounded-md px-4 py-2 hover:bg-blue-600 transition-colors flex justify-center items-center"
+        >
+          {isPending ? (
+            <LoaderCircle className="size-6 animate-spin " />
+          ) : (
+            "Sign In"
+          )}
         </button>
-        <button type="submit" formAction={signup}>
-          Sign Up
-        </button>
+        <p className="text-gray-500">
+          Don&apos;t have an account?{" "}
+          <Link
+            href="/signup"
+            className="text-blue-700 font-semibold hover:text-blue-500 transition-colors"
+          >
+            Sign up
+          </Link>
+        </p>
       </form>
     </div>
   );

@@ -43,15 +43,15 @@ export default function Login() {
     <div className="flex flex-col items-center justify-center h-screen container mx-auto">
       <form
         action={formAction}
-        className="flex flex-col gap-5 items-center p-4 rounded-md w-11/12 sm:w-2/3   lg:w-2/5 shadow-lg"
+        className="flex flex-col gap-2 items-center p-4 rounded-md w-11/12 sm:w-2/3   lg:w-2/5 shadow-lg"
       >
-        <h1 className="text-3xl font-bold text-gray-800">Sign In</h1>
+        <h1 className="text-3xl font-bold text-gray-800">login</h1>
         <p
           className={`text-red-500 bg-red-100 w-full text-center p-2 rounded-md ${
-            state.errors.message ? "" : "hidden"
+            state.errors.message ? "" : "opacity-0"
           }`}
         >
-          {state.errors.message}
+          {state.errors.message ? state.errors.message : "placeholder"}
         </p>
         <div className="w-full">
           <label htmlFor="email">Email</label>
@@ -72,7 +72,9 @@ export default function Login() {
               onBlur={validateEmail}
             />
           </div>
-          <p className="text-red-500">{formError.email}</p>
+          <p className={`text-red-500 ${formError.email ? "" : "opacity-0"}`}>
+            {formError.email ? formError.email : "placeholder"}
+          </p>
         </div>
         <div className="w-full">
           <label htmlFor="password">Password</label>
@@ -104,7 +106,11 @@ export default function Login() {
               />
             )}
           </div>
-          <p className="text-red-500">{formError.password}</p>
+          <p
+            className={`text-red-500 ${formError.password ? "" : "opacity-0"}`}
+          >
+            {formError.password ? formError.password : "placeholder"}
+          </p>
         </div>
         <Link
           href="/reset-password"
@@ -120,7 +126,7 @@ export default function Login() {
           {isPending ? (
             <LoaderCircle className="size-6 animate-spin " />
           ) : (
-            "Sign In"
+            "Login"
           )}
         </button>
         <p className="text-gray-500">

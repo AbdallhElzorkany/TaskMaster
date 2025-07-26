@@ -1,7 +1,12 @@
+import { resetPassword } from "../actions";
+
 export default function ResetPassword() {
   return (
     <div>
-      <h1>Reset Password</h1>
+      <form action={resetPassword}>
+        <input type="email" name="email" />
+        <button type="submit">Reset Password</button>
+      </form>
     </div>
   );
 }

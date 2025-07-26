@@ -123,12 +123,6 @@ export default function Signup() {
             {formError.password ? formError.password : "placeholder"}
           </p>
         </div>
-        <Link
-          href="/reset-password"
-          className="text-blue-700 self-end mr-1 font-semibold hover:text-blue-500 transition-colors"
-        >
-          Forgot your password?
-        </Link>
         <button
           disabled={!formError.submit || isPending}
           type="submit"

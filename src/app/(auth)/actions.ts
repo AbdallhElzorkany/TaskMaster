@@ -52,8 +52,6 @@ export async function signup(
 export async function resetPassword(formData: FormData) {
   const supabase = await createClient();
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
   const email = formData.get("email") as string;
 
   const { error } = await supabase.auth.resetPasswordForEmail(email);

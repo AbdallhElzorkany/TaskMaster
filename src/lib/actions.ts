@@ -49,18 +49,39 @@ export async function signup(
   redirect("/");
 }
 
-export async function resetPassword(formData: FormData) {
+export async function resetPassword(
+  prevState: FormState | undefined,
+  formData: FormData
+) {
   const supabase = await createClient();
 
   const email = formData.get("email") as string;
 
   const { error } = await supabase.auth.resetPasswordForEmail(email);
 
+  const errors: Errors = {};
   if (error) {
-    console.error("Error reseting password:", error.message);
-    return;
+    errors.message = error.message;
+    return { errors };
   }
+  revalidatePath("/", "layout");
+  redirect("/");
+}
 
+export async function resetPasswordConfirm(
+  prevState: FormState | undefined,
+  formData: FormData
+) {
+  const supabase = await createClient();
+
+  const password = formData.get("password") as string;
+
+  const { error } = await supabase.auth.updateUser({ password: password });
+  const errors: Errors = {};
+  if (error) {
+    errors.message = error.message;
+    return { errors };
+  }
   revalidatePath("/", "layout");
   redirect("/");
 }

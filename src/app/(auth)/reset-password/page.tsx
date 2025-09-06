@@ -1,4 +1,4 @@
-import { resetPassword } from "../actions";
+import { resetPassword } from "../../../lib/actions";
 
 export default function ResetPassword() {
   return (

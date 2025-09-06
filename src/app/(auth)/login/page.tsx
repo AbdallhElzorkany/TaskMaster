@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { signin, FormState } from "../actions";
+import { signin, FormState } from "../../../lib/actions";
 import { Eye, EyeClosed, Mail, Lock, LoaderCircle } from "lucide-react";
 import { useState, useActionState } from "react";
 
@@ -43,7 +43,7 @@ export default function Login() {
     <div className="flex flex-col items-center justify-center h-screen container mx-auto">
       <form
         action={formAction}
-        className="flex flex-col gap-2 items-center p-4 rounded-md w-11/12 sm:w-2/3   lg:w-2/5 shadow-lg"
+        className="flex flex-col gap-2 items-center p-4 rounded-md w-11/12 sm:w-2/3   lg:w-1/3 shadow-lg"
       >
         <h1 className="text-3xl font-bold text-gray-800">login</h1>
         <p

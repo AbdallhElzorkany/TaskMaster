@@ -44,7 +44,7 @@ export default function Login() {
       <h1 className="text-3xl font-bold text-gray-800 flex items-center gap-2"><CalendarCheck2 className="size-6 text-blue-700"/> Mission Control</h1>
       <form
         action={formAction}
-        className="flex flex-col gap-2 items-center p-4 rounded-md w-11/12 sm:w-2/3   lg:w-1/3 shadow-lg border-1 border-gray-100"
+        className="flex flex-col gap-2 items-center p-10 rounded-md w-11/12 sm:w-2/3   lg:w-1/3 shadow-lg border-1 border-gray-100"
       >
         <div className="flex flex-col gap-2 items-center">
           <h1 className="text-3xl font-bold text-gray-800">Welcome Back</h1>

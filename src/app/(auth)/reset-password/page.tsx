@@ -41,7 +41,7 @@ export default function ResetPassword() {
         action={formAction}
         className="flex flex-col gap-2 items-center p-10 rounded-md w-11/12 sm:w-2/3 border border-gray-100  lg:w-1/3 shadow-lg"
       >
-        <div className="flex flex-col gap-2 text-center items-center">
+        <div className="text-center flex flex-col gap-2 items-center">
           <h1 className="text-3xl font-bold text-gray-800">
             Reset your password
           </h1>

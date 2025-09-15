@@ -1,10 +1,23 @@
 "use client";
 import Link from "next/link";
 import { signin, FormState } from "../../../lib/actions";
-import { Eye, CalendarCheck2, EyeClosed, Mail, Lock, LoaderCircle } from "lucide-react";
+import {
+  Eye,
+  CalendarCheck2,
+  EyeClosed,
+  Mail,
+  Lock,
+  LoaderCircle,
+} from "lucide-react";
 import { useState, useActionState } from "react";
-
+import { useRouter } from "next/navigation";
+import { useSession } from "@/components/UserProvider";
 export default function Login() {
+  const router = useRouter();
+  const session = useSession();
+  if (session) {
+    router.push("/");
+  }
   const initialState: FormState = {
     errors: {},
   };
@@ -41,12 +54,14 @@ export default function Login() {
   }
   return (
     <div className="flex flex-col items-center justify-center h-screen gap-10  container mx-auto">
-      <h1 className="text-3xl font-bold text-gray-800 flex items-center gap-2"><CalendarCheck2 className="size-6 text-blue-700"/> Mission Control</h1>
+      <h1 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
+        <CalendarCheck2 className="size-6 text-blue-700" /> Mission Control
+      </h1>
       <form
         action={formAction}
         className="flex flex-col gap-2 items-center p-10 rounded-md w-11/12 sm:w-2/3   lg:w-1/3 shadow-lg border-1 border-gray-100"
       >
-        <div className="flex flex-col gap-2 items-center">
+        <div className="flex flex-col gap-2 items-center text-center">
           <h1 className="text-3xl font-bold text-gray-800">Welcome Back</h1>
           <p className="text-gray-500">Login to your account</p>
         </div>

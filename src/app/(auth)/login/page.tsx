@@ -55,7 +55,7 @@ export default function Login() {
   return (
     <div className="flex flex-col items-center justify-center h-screen gap-10  container mx-auto">
       <h1 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
-        <CalendarCheck2 className="size-6 text-blue-700" /> Mission Control
+        <CalendarCheck2 className="size-6 text-blue-700" /> Task Master
       </h1>
       <form
         action={formAction}

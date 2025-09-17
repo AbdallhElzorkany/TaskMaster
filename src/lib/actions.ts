@@ -46,7 +46,7 @@ export async function signup(
     return { errors };
   }
   revalidatePath("/", "layout");
-  redirect("/");
+  redirect("/profile");
 }
 
 export async function resetPassword(

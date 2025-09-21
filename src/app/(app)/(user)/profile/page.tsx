@@ -34,7 +34,7 @@ export default async function Profile() {
             src={
               data?.[0].gender === null
                 ? "/male.png"
-                : data?.[0].gender === "male"
+                : data?.[0].gender.match(/male/i)
                 ? "/male.png"
                 : "/female.png"
             }

@@ -5,6 +5,17 @@ import { LoaderCircle, Save } from "lucide-react";
 import { supabase } from "@/utils/supabase/client";
 import { User } from "@supabase/supabase-js";
 import { editProfile, FormState } from "@/lib/editProfile";
+type UserData = {
+  id: string;
+  email: string;
+  fullname: string;
+  department: string;
+  job_title: string;
+  gender: string;
+  phone: string;
+  location: string;
+  role: string;
+};
 export default function EditProfile() {
   const initialState: FormState = {
     errors: {
@@ -17,7 +28,7 @@ export default function EditProfile() {
   );
   const router = useRouter();
   const [user, setUser] = useState<User | null>(null);
-  const [data, setData] = useState<any[] | null>(null);
+  const [data, setData] = useState<UserData[] | null>(null);
   useEffect(() => {
     async function getUser() {
       const { data } = await supabase.auth.getUser();
@@ -63,7 +74,13 @@ export default function EditProfile() {
           </p>
           <form action={formAction} className="flex flex-col gap-y-10">
             <div className="grid grid-cols-2  not-sm:grid-cols-1 gap-x-10 not-md:gap-x-5 gap-y-5">
-              <input type="hidden" className="opacity-0" name="id" readOnly value={data?.[0].id ||""} />
+              <input
+                type="hidden"
+                className="opacity-0"
+                name="id"
+                readOnly
+                value={data?.[0].id || ""}
+              />
               <div>
                 <label
                   htmlFor="fullname"
@@ -163,10 +180,7 @@ export default function EditProfile() {
                   onChange={() => {}}
                   id="gender"
                   type="text"
-                  defaultValue={
-                    (data?.[0].gender.charAt(0).toUpperCase() +
-                    data?.[0].gender.slice(1))||""
-                  }
+                  defaultValue={data?.[0].gender || ""}
                   name="gender"
                   className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-black w-full"
                 />

@@ -62,9 +62,6 @@ export default function EditProfile() {
       </div>
       <div className="mt-10 bg-white py-5 rounded-lg shadow-md">
         <div className="px-5">
-          <h3 className="text-3xl text-gray-800 font-bold mb-5 text-center">
-            Details
-          </h3>
           <p
             className={` p-2 text-lg rounded-lg mb-5 text-center ${
               state.errors.message ? "text-red-600 bg-red-200" : "text-white"

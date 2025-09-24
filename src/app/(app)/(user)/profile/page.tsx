@@ -15,7 +15,6 @@ export default async function Profile() {
     .from("profiles")
     .select("*")
     .eq("id", user.id);
-  console.log(data);
   return (
     <div className="not-lg:w-11/12 lg:w-3/4 xl:w-3/5 mx-auto py-5">
       <div className="flex items-center justify-between">

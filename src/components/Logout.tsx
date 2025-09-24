@@ -12,7 +12,7 @@ export function Logout() {
         router.push("/login");
       }}
     >
-      <LogOut className="not-sm:size-5" />
+      <LogOut className="size-5" />
     </button>
   );
 }

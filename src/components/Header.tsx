@@ -15,7 +15,7 @@ const Header = () => {
           href={"/profile"}
           className="bg-blue-700 hover:bg-blue-800   p-2 rounded-full"
         >
-          <CircleUser className="text-white not-sm:size-5" />
+          <CircleUser className="text-white size-5" />
         </Link>
         <Logout />
       </div>

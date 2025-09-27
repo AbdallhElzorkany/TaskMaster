@@ -21,7 +21,7 @@ export default async function Profile() {
         <h1 className="text-4xl text-gray-800 font-bold not-md:text-3xl">Profile</h1>
         <Link
           href={`/profile/edit`}
-          className="bg-blue-700 flex items-center px-4 py-2 rounded-lg not-md:p-2 not-md:text-sm text-white text-lg font-semibold"
+          className="bg-blue-700 hover:bg-blue-800 flex items-center px-4 py-2 rounded-lg not-md:p-2 not-md:text-sm text-white text-lg font-semibold"
         >
           <Pencil className="mr-2 not-md:size-5 not-md:mr-1" />
           Edit Profile

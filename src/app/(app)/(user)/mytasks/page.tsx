@@ -15,7 +15,8 @@ export default async function Tasks() {
   const { data } = await supabase
     .from("tasks")
     .select("*")
-    .eq("assignee", user.id);
+    .eq("assignee", user.id)
+    .order("status", { ascending: true });
   return (
     <div className="not-lg:w-11/12 lg:w-3/4 xl:w-3/5 mx-auto py-5 ">
       <h1 className="text-4xl text-gray-800 font-bold not-md:text-3xl my-10">
@@ -38,13 +39,13 @@ export default async function Tasks() {
               className="not-sm:text-sm grid grid-cols-3 p-5 border-b-1 border-gray-200 items-center gap-3"
             >
               <Link
-                href={`/tasks/${task.id}`}
+                href={`/mytasks/${task.id}`}
                 title={task.title}
                 className=" hover:underline flex items-center gap-1  capitalize overflow-hidden overflow-ellipsis w-fit max-w-11/12"
               >
                 {task.title} <ExternalLink className="size-4" />
               </Link>
-              <div>{format(new Date(task.due_date), "yyyy MMM dd")}</div>
+              <div>{format(new Date(task.due_date), " MMM dd, yyyy")}</div>
               <div>
                 <Status status={task.status} />
               </div>

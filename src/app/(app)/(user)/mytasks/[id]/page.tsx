@@ -30,7 +30,7 @@ export default async function Task({
           Task Details
         </h1>
         <Link
-          href={`/tasks`}
+          href={`/mytasks`}
           className="bg-blue-700 hover:bg-blue-800 flex items-center px-4 py-2 rounded-lg not-md:p-2 not-md:text-sm text-white text-lg font-semibold"
         >
           <ChevronLeft className="mr-1 not-md:size-5 not-md:mr-1" />

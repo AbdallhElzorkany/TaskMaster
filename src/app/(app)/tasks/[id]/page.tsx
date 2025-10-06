@@ -3,7 +3,6 @@ import { createClient } from "@/utils/supabase/server";
 import { ChevronLeft } from "lucide-react";
 import { format } from "date-fns";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import { CompleteTask } from "@/components/CompleteTask";
 export default async function Task({
   params,
@@ -15,9 +14,6 @@ export default async function Task({
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) {
-    redirect("/login");
-  }
   const { data: task } = await supabase.from("tasks").select("*").eq("id", id);
   const { data: assignee } = await supabase
     .from("profiles")
@@ -30,7 +26,7 @@ export default async function Task({
           Task Details
         </h1>
         <Link
-          href={`/mytasks`}
+          href={`/tasks`}
           className="bg-blue-700 hover:bg-blue-800 flex items-center px-4 py-2 rounded-lg not-md:p-2 not-md:text-sm text-white text-lg font-semibold"
         >
           <ChevronLeft className="mr-1 not-md:size-5 not-md:mr-1" />

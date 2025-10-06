@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+
 import { createClient } from "@/utils/supabase/server";
 import AddNewTask from "@/components/AddNewTask";
 export default async function AddTask() {
@@ -6,13 +6,11 @@ export default async function AddTask() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) {
-    redirect("/login");
-  }
+
   const { data: profile } = await supabase
     .from("profiles")
     .select("*")
-    .eq("id", user.id);
+    .eq("id", user?.id);
   if (profile?.[0].role !== "admin") {
     return (
       <div className="text-center capitalize text-4xl font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">

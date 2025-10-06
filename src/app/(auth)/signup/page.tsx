@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { signup, FormState } from "../../../lib/actions";
+import { signup, FormState } from "@/lib/actions";
 import {
   Eye,
   EyeClosed,

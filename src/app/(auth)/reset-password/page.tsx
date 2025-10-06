@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { resetPassword, FormState } from "../../../lib/actions";
+import { resetPassword, FormState } from "@/lib/actions";
 import {
   Mail,
   LoaderCircle,

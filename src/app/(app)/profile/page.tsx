@@ -1,5 +1,5 @@
 import { createClient } from "@/utils/supabase/server";
-import { redirect } from "next/navigation";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Pencil } from "lucide-react";
@@ -8,13 +8,11 @@ export default async function Profile() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) {
-    redirect("/login");
-  }
+
   const { data } = await supabase
     .from("profiles")
     .select("*")
-    .eq("id", user.id);
+    .eq("id", user?.id);
   return (
     <div className="not-lg:w-11/12 lg:w-3/4 xl:w-3/5 mx-auto py-5">
       <div className="flex items-center justify-between">

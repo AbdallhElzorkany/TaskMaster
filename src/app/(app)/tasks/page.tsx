@@ -34,10 +34,10 @@ export default async function Tasks() {
     tasks = data;
   }
   return (
-    <div className="not-lg:w-[97%] lg:w-3/4 xl:w-3/5 mx-auto py-5 ">
-      <div className="flex items-center justify-between">
+    <div className="not-sm:w-full sm:w-[97%] lg:w-3/4 xl:w-3/5 mx-auto py-5">
+      <div className="flex items-center justify-between not-sm:px-2">
         <h1 className="text-4xl text-gray-800 font-bold not-md:text-3xl my-10">
-          My Tasks
+          Tasks
         </h1>
         {profile?.[0].role === "admin" && (
           <Link
@@ -49,11 +49,11 @@ export default async function Tasks() {
           </Link>
         )}
       </div>
-      <div className="bg-white min-h-130  rounded-xl   shadow-sm ">
+      <div className="bg-white min-h-130  rounded-xl not-sm:rounded-none   shadow-sm ">
         <div
           className={`bg-blue-600 gap-3 not-sm:gap-1 text-white grid ${
             profile?.[0].role === "admin" ? "grid-cols-4" : "grid-cols-3"
-          } relative uppercase not-sm:font-normal not-sm:text-sm font-semibold p-5 not-sm:px-2 not-sm:py-3 rounded-t-xl`}
+          } relative uppercase not-sm:font-normal not-sm:text-sm font-semibold p-5 not-sm:px-2 not-sm:py-3 rounded-t-xl not-sm:rounded-none`}
         >
           <p>task</p>
           <p>due date</p>

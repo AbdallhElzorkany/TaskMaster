@@ -92,6 +92,7 @@ export default function EditProfile() {
                   onChange={() => {}}
                   name="fullname"
                   className="w-full bg-gray-100 px-4 py-2 rounded border border-gray-300 text-black "
+                  placeholder="Full Name"
                 />
               </div>
               <div>
@@ -108,6 +109,7 @@ export default function EditProfile() {
                   disabled
                   onChange={() => {}}
                   className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-gray-600 w-full"
+                  placeholder="Email"
                 />
               </div>
               <div>
@@ -124,6 +126,7 @@ export default function EditProfile() {
                   onChange={() => {}}
                   name="department"
                   className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-black w-full"
+                  placeholder="Department"
                 />
               </div>
               <div>
@@ -140,6 +143,7 @@ export default function EditProfile() {
                   name="job_title"
                   defaultValue={data?.[0].job_title || ""}
                   className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-black w-full"
+                  placeholder="Job Title"
                 />
               </div>
               <div>
@@ -156,6 +160,7 @@ export default function EditProfile() {
                   defaultValue={data?.[0].gender || ""}
                   name="gender"
                   className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-black w-full"
+                  placeholder="Gender"
                 />
               </div>
               <div>
@@ -172,6 +177,7 @@ export default function EditProfile() {
                   name="phone"
                   defaultValue={data?.[0].phone || ""}
                   className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-black w-full"
+                  placeholder="Phone"
                 />
               </div>
               <div>
@@ -188,6 +194,7 @@ export default function EditProfile() {
                   onChange={() => {}}
                   name="location"
                   className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-black w-full"
+                  placeholder="Location"
                 />
               </div>
               <div>
@@ -203,6 +210,7 @@ export default function EditProfile() {
                   value={data?.[0].role || ""}
                   disabled
                   className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-gray-600 w-full"
+                  placeholder="Role"
                 />
               </div>
             </div>

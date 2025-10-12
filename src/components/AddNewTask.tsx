@@ -110,6 +110,7 @@ export default function AddNewTask({ data }: { data: data[] }) {
               value={task.title}
               name="title"
               className="w-full bg-gray-100 px-4 py-2 rounded border border-gray-300 text-black "
+              placeholder="Enter Task Title..."
             />
           </div>
           <div>
@@ -129,6 +130,7 @@ export default function AddNewTask({ data }: { data: data[] }) {
               value={task.description}
               name="description"
               className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-black w-full"
+              placeholder="Enter Task Description..."
             />
           </div>
           <div className="grid grid-cols-2 not-md:grid-cols-1   gap-x-10">

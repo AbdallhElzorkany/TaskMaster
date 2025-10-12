@@ -66,6 +66,7 @@ export default async function Profile() {
                 value={data?.[0].fullname || ""}
                 disabled
                 className="w-full bg-gray-100 px-4 py-2 rounded border border-gray-300 text-gray-600 "
+                placeholder="Full Name"
               />
             </div>
             <div>
@@ -77,6 +78,7 @@ export default async function Profile() {
                 value={data?.[0].email || ""}
                 disabled
                 className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-gray-600 w-full"
+                placeholder="Email"
               />
             </div>
             <div>
@@ -88,6 +90,7 @@ export default async function Profile() {
                 value={data?.[0].department || ""}
                 disabled
                 className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-gray-600 w-full"
+                placeholder="Department"
               />
             </div>
             <div>
@@ -99,6 +102,7 @@ export default async function Profile() {
                 value={data?.[0].job_title || ""}
                 disabled
                 className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-gray-600 w-full"
+                placeholder="Job Title"
               />
             </div>
             <div>
@@ -110,6 +114,7 @@ export default async function Profile() {
                 value={data?.[0].gender || ""}
                 disabled
                 className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-gray-600 w-full"
+                placeholder="Gender"
               />
             </div>
             <div>
@@ -121,6 +126,7 @@ export default async function Profile() {
                 value={data?.[0].phone || ""}
                 disabled
                 className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-gray-600 w-full"
+                placeholder="Phone"
               />
             </div>
             <div>
@@ -132,6 +138,7 @@ export default async function Profile() {
                 value={data?.[0].location || ""}
                 disabled
                 className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-gray-600 w-full"
+                placeholder="Location"
               />
             </div>
             <div>
@@ -141,6 +148,7 @@ export default async function Profile() {
                 value={data?.[0].role || ""}
                 disabled
                 className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-gray-600 w-full"
+                placeholder="Role"
               />
             </div>
           </div>

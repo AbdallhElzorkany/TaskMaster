@@ -22,7 +22,7 @@ export default async function Header() {
     <header className="flex items-center justify-between  border-b border-solid border-gray-200 bg-white px-10 not-md:px-4 py-4 shadow-sm not-md:flex-wrap gap-2">
       <Link
         href="/"
-        className="flex items-center gap-2 w-1/2 not-md:w-full not-md:justify-center"
+        className="flex items-center gap-2 not-md:mx-auto not-md:justify-center hover:text-blue-700 transition-colors"
       >
         <CalendarCheck2 className="text-blue-700 size-6"></CalendarCheck2>
         <h2 className="text-xl font-bold tracking-tight">Task Master</h2>

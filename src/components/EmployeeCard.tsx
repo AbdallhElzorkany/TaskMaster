@@ -35,7 +35,7 @@ const EmployeeCard = ({ profile }: { profile: Profile }) => {
       </p>
       <p
         title={profile.email}
-        className="flex items-center gap-1 overflow-hidden overflow-ellipsis "
+        className="flex items-center gap-1 overflow-hidden overflow-ellipsis"
       >
         <Mail className="size-5 text-blue-700" />
         <span className="capitalize">email:</span> {profile.email}

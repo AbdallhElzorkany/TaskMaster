@@ -1,4 +1,10 @@
-import { CalendarCheck2, CircleUser, User, UserPlusIcon ,Code2} from "lucide-react";
+import {
+  CalendarCheck2,
+  CircleUser,
+  User,
+  UserPlusIcon,
+  Code2,
+} from "lucide-react";
 import { createClient } from "@/utils/supabase/server";
 import { Logout } from "@/components/Logout";
 import Link from "next/link";
@@ -72,8 +78,8 @@ export default async function Header() {
           </li>
           <li className="flex items-center gap-1">
             <Link
-              title="register"
-              href={"/register"}
+              title="signup"
+              href={"/signup"}
               className="flex items-center gap-1 transition-colors hover:text-blue-700"
             >
               <UserPlusIcon className="size-5" />

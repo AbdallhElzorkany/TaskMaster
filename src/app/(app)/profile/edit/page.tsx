@@ -88,15 +88,7 @@ export default function EditProfile() {
                 <input
                   id="fullname"
                   type="text"
-                  defaultValue={
-                    data?.[0].fullname
-                      .split(" ")
-                      .map(
-                        (word: string) =>
-                          word.charAt(0).toUpperCase() + word.slice(1)
-                      )
-                      .join(" ") || ""
-                  }
+                  defaultValue={data?.[0].fullname || ""}
                   onChange={() => {}}
                   name="fullname"
                   className="w-full bg-gray-100 px-4 py-2 rounded border border-gray-300 text-black "
@@ -128,15 +120,7 @@ export default function EditProfile() {
                 <input
                   id="department"
                   type="text"
-                  defaultValue={
-                    data?.[0].department
-                      .split(" ")
-                      .map(
-                        (word: string) =>
-                          word.charAt(0).toUpperCase() + word.slice(1)
-                      )
-                      .join(" ") || ""
-                  }
+                  defaultValue={data?.[0].department || ""}
                   onChange={() => {}}
                   name="department"
                   className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-black w-full"
@@ -154,15 +138,7 @@ export default function EditProfile() {
                   id="job_title"
                   type="text"
                   name="job_title"
-                  defaultValue={
-                    data?.[0].job_title
-                      .split(" ")
-                      .map(
-                        (word: string) =>
-                          word.charAt(0).toUpperCase() + word.slice(1)
-                      )
-                      .join(" ") || ""
-                  }
+                  defaultValue={data?.[0].job_title || ""}
                   className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-black w-full"
                 />
               </div>
@@ -208,15 +184,7 @@ export default function EditProfile() {
                 <input
                   id="location"
                   type="text"
-                  defaultValue={
-                    data?.[0].location
-                      .split(" ")
-                      .map(
-                        (word: string) =>
-                          word.charAt(0).toUpperCase() + word.slice(1)
-                      )
-                      .join(" ") || ""
-                  }
+                  defaultValue={data?.[0].location || ""}
                   onChange={() => {}}
                   name="location"
                   className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-black w-full"
@@ -232,15 +200,7 @@ export default function EditProfile() {
                 <input
                   id="role"
                   type="text"
-                  value={
-                    data?.[0].role
-                      .split(" ")
-                      .map(
-                        (word: string) =>
-                          word.charAt(0).toUpperCase() + word.slice(1)
-                      )
-                      .join(" ") || ""
-                  }
+                  value={data?.[0].role || ""}
                   disabled
                   className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-gray-600 w-full"
                 />

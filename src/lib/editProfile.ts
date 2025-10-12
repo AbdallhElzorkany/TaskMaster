@@ -34,6 +34,6 @@ export async function editProfile(
       },
     };
   }
-  revalidatePath("/profile/edit");
+  revalidatePath("/profile");
   redirect("/profile");
 }

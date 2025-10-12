@@ -57,7 +57,7 @@ export default async function Header() {
               className="flex items-center gap-1 transition-colors hover:text-blue-700 not-md:flex-col not-md:gap-0"
             >
               <CircleUser className="size-5" />
-              {profile?.[0].fullname}
+              {profile?.[0].fullname?profile?.[0].fullname:"My Profile"}
             </Link>
           </li>
           <li>

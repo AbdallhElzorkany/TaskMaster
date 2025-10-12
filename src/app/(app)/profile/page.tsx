@@ -16,7 +16,9 @@ export default async function Profile() {
   return (
     <div className="not-lg:w-11/12 lg:w-3/4 xl:w-3/5 mx-auto py-5">
       <div className="flex items-center justify-between">
-        <h1 className="text-4xl text-gray-800 font-bold not-md:text-3xl">Profile</h1>
+        <h1 className="text-4xl text-gray-800 font-bold not-md:text-3xl">
+          Profile
+        </h1>
         <Link
           href={`/profile/edit`}
           className="bg-blue-700 hover:bg-blue-800 flex items-center px-4 py-2 rounded-lg not-md:p-2 not-md:text-sm text-white text-lg font-semibold"
@@ -42,23 +44,13 @@ export default async function Profile() {
           />
           <div className="flex flex-col gap-2">
             <h2 className="text-2xl font-bold text-gray-800">
-              {data?.[0].fullname
-                .split(" ")
-                .map(
-                  (word: string) => word.charAt(0).toUpperCase() + word.slice(1)
-                )
-                .join(" ") || "Name"}
+              {data?.[0].fullname || "Name"}
             </h2>
             <p className="text-lg text-gray-500 font-semibold">
               {data?.[0].email || "Email"}
             </p>
             <p className="text-lg text-gray-500 font-semibold">
-              {data?.[0].job_title
-                .split(" ")
-                .map(
-                  (word: string) => word.charAt(0).toUpperCase() + word.slice(1)
-                )
-                .join(" ") || "Job Title"}
+              {data?.[0].job_title || "Job Title"}
             </p>
           </div>
         </div>
@@ -71,15 +63,7 @@ export default async function Profile() {
               </h4>
               <input
                 type="text"
-                value={
-                  data?.[0].fullname
-                    .split(" ")
-                    .map(
-                      (word: string) =>
-                        word.charAt(0).toUpperCase() + word.slice(1)
-                    )
-                    .join(" ") || ""
-                }
+                value={data?.[0].fullname || ""}
                 disabled
                 className="w-full bg-gray-100 px-4 py-2 rounded border border-gray-300 text-gray-600 "
               />
@@ -101,15 +85,7 @@ export default async function Profile() {
               </h4>
               <input
                 type="text"
-                value={
-                  data?.[0].department
-                    .split(" ")
-                    .map(
-                      (word: string) =>
-                        word.charAt(0).toUpperCase() + word.slice(1)
-                    )
-                    .join(" ") || ""
-                }
+                value={data?.[0].department || ""}
                 disabled
                 className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-gray-600 w-full"
               />
@@ -120,15 +96,7 @@ export default async function Profile() {
               </h4>
               <input
                 type="text"
-                value={
-                  data?.[0].job_title
-                    .split(" ")
-                    .map(
-                      (word: string) =>
-                        word.charAt(0).toUpperCase() + word.slice(1)
-                    )
-                    .join(" ") || ""
-                }
+                value={data?.[0].job_title || ""}
                 disabled
                 className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-gray-600 w-full"
               />
@@ -139,10 +107,7 @@ export default async function Profile() {
               </h4>
               <input
                 type="text"
-                value={
-                  data?.[0].gender.charAt(0).toUpperCase() +
-                  data?.[0].gender.slice(1)
-                }
+                value={data?.[0].gender || ""}
                 disabled
                 className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-gray-600 w-full"
               />
@@ -164,15 +129,7 @@ export default async function Profile() {
               </h4>
               <input
                 type="text"
-                value={
-                  data?.[0].location
-                    .split(" ")
-                    .map(
-                      (word: string) =>
-                        word.charAt(0).toUpperCase() + word.slice(1)
-                    )
-                    .join(" ") || ""
-                }
+                value={data?.[0].location || ""}
                 disabled
                 className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-gray-600 w-full"
               />
@@ -181,15 +138,7 @@ export default async function Profile() {
               <h4 className="text-md font-semibold text-gray-600 mb-1">Role</h4>
               <input
                 type="text"
-                value={
-                  data?.[0].role
-                    .split(" ")
-                    .map(
-                      (word: string) =>
-                        word.charAt(0).toUpperCase() + word.slice(1)
-                    )
-                    .join(" ") || ""
-                }
+                value={data?.[0].role || ""}
                 disabled
                 className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-gray-600 w-full"
               />

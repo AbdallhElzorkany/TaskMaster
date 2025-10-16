@@ -13,7 +13,7 @@ export function Logout() {
         router.push("/");
       }}
     >
-      <LogOut className="size-5" /> Logout
+      <LogOut className="size-5 text-red-600" /> Logout
     </button>
   );
 }

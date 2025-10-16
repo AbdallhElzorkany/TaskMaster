@@ -1,9 +1,10 @@
 import {
   CalendarCheck2,
   CircleUser,
-  User,
+  Users,
   UserPlusIcon,
   Code2,
+  User,
 } from "lucide-react";
 import { createClient } from "@/utils/supabase/server";
 import { Logout } from "@/components/Logout";
@@ -19,7 +20,7 @@ export default async function Header() {
     .select("*")
     .eq("id", user?.id);
   return (
-    <header className="flex items-center justify-between  border-b border-solid border-gray-200 bg-white px-10 not-md:px-4 py-4 shadow-sm not-md:flex-wrap gap-2">
+    <header className="flex items-center justify-between  border-b border-solid border-gray-200 bg-white px-10 not-md:px-4 py-2 shadow-sm not-md:flex-wrap gap-2">
       <Link
         href="/"
         className="flex items-center gap-2 not-md:mx-auto not-md:justify-center hover:text-blue-700 transition-colors"
@@ -28,15 +29,15 @@ export default async function Header() {
         <h2 className="text-xl font-bold tracking-tight">Task Master</h2>
       </Link>
       {user ? (
-        <ul className="flex items-center w-1/2 justify-end gap-4  not-md:w-full not-md:justify-evenly ">
+        <ul className="flex items-center w-3/4 justify-end gap-4  not-md:w-full not-md:justify-center not-sm:gap-1">
           {profile?.[0].role === "admin" && (
             <li>
               <Link
                 title="employees"
                 href="/employees"
-                className="flex items-center gap-1 transition-colors hover:text-blue-700 not-md:flex-col not-md:gap-0"
+                className="flex items-center gap-1 transition-colors hover:text-blue-700 not-md:flex-col not-md:gap-0  p-2 rounded-lg"
               >
-                <User className="size-5" /> Employees
+                <Users className="size-5 text-blue-700" /> Employees
               </Link>
             </li>
           )}
@@ -44,9 +45,9 @@ export default async function Header() {
             <Link
               title="tasks"
               href="/tasks"
-              className="flex items-center gap-1 transition-colors hover:text-blue-700 not-md:flex-col not-md:gap-0"
+              className="flex items-center gap-1 transition-colors hover:text-blue-700 not-md:flex-col not-md:gap-0 p-2"
             >
-              <CalendarCheck2 className="size-5" /> Tasks
+              <CalendarCheck2 className="size-5 text-blue-700" /> Tasks
             </Link>
           </li>
 
@@ -54,10 +55,10 @@ export default async function Header() {
             <Link
               title="profile"
               href={"/profile"}
-              className="flex items-center gap-1 transition-colors hover:text-blue-700 not-md:flex-col not-md:gap-0"
+              className="flex items-center gap-1 transition-colors hover:text-blue-700 not-md:flex-col not-md:gap-0 p-2 text-nowrap"
             >
-              <CircleUser className="size-5" />
-              {profile?.[0].fullname?profile?.[0].fullname:"My Profile"}
+              <CircleUser className="size-5 text-blue-700" />
+              {profile?.[0].fullname ? profile?.[0].fullname : "My Profile"}
             </Link>
           </li>
           <li>
@@ -65,14 +66,14 @@ export default async function Header() {
           </li>
         </ul>
       ) : (
-        <ul className="flex items-center w-1/2 justify-end gap-6 not-md:w-full not-md:justify-evenly ">
+        <ul className="flex items-center w-1/2 justify-end gap-6 not-md:w-full not-md:justify-center ">
           <li className="flex items-center gap-2">
             <Link
               title="features"
               href={"#features"}
-              className="flex items-center gap-1 transition-colors hover:text-blue-700"
+              className="flex items-center gap-1 transition-colors hover:text-blue-700 p-2"
             >
-              <Code2 className="size-5" />
+              <Code2 className="size-5 text-blue-700" />
               Features
             </Link>
           </li>
@@ -80,18 +81,18 @@ export default async function Header() {
             <Link
               title="signup"
               href={"/signup"}
-              className="flex items-center gap-1 transition-colors hover:text-blue-700"
+              className="flex items-center gap-1 transition-colors hover:text-blue-700 p-2"
             >
-              <UserPlusIcon className="size-5" />
+              <UserPlusIcon className="size-5 text-blue-700" />
               Register
             </Link>
             /
             <Link
               title="login"
               href={"/login"}
-              className="flex items-center gap-1 transition-colors hover:text-blue-700 "
+              className="flex items-center gap-1 transition-colors hover:text-blue-700 p-2"
             >
-              <User className="size-5" />
+              <User className="size-5 text-blue-700" />
               Login
             </Link>
           </li>

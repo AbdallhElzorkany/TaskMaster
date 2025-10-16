@@ -1,36 +1,188 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📋 Task Master - Mission Control
 
-## Getting Started
+<div align="center">
 
-First, run the development server:
+A modern, full-stack task management application built with Next.js 15, React 19, and Supabase. Task Master empowers teams to streamline workflows, collaborate efficiently, and boost productivity with an intuitive interface and powerful features.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+[![Next.js](https://img.shields.io/badge/Next.js-15.5.4-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.0.0-61dafb?style=for-the-badge&logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178c6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-38bdf8?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![Supabase](https://img.shields.io/badge/Supabase-2.50.2-3ecf8e?style=for-the-badge&logo=supabase)](https://supabase.com/)
+
+[Live Demo](https://taskmaster-legend.vercel.app/) · [Report Bug](https://github.com/AbdallhElzorkany/mission-control/issues) · [Request Feature](https://github.com/AbdallhElzorkany/mission-control/issues)
+
+</div>
+
+---
+
+## 📑 Table of Contents
+
+- [Features](#-features)
+- [Tech Stack](#️-tech-stack)
+- [Project Structure](#-project-structure)
+- [User Roles](#-user-roles)
+- [License](#-license)
+- [Author](#-author)
+
+---
+
+## ✨ Features
+
+### 🔐 Authentication & Authorization
+
+- Secure user registration and login with Supabase Auth
+- Role-based access control (Admin & Employee roles)
+- Password reset functionality
+- Protected routes with middleware authentication
+
+### 📊 Task Management
+
+- **Create, read, update, and delete tasks**
+- Assign tasks to team members
+- Set due dates and track progress
+- Real-time task status updates (Pending, In Progress, Completed)
+- Filter and sort tasks by status
+
+### 👥 User Management
+
+- User profiles with editable information
+- Admin dashboard to view all employees
+- Employee list with task assignments
+- Profile customization
+
+### 🎨 Modern UI/UX
+
+- Beautiful landing page with feature highlights
+- Responsive design for mobile, tablet, and desktop
+- Clean and intuitive interface
+- Loading states and error handling
+- Smooth transitions and hover effects
+
+### 🚀 Performance
+
+- Next.js 15 with Turbopack for blazing-fast development
+- Server-side rendering (SSR) for optimal performance
+- Optimized image loading
+- Client and server component architecture
+
+## 🛠️ Tech Stack
+
+**Frontend:**
+
+- [Next.js 15](https://nextjs.org/) - React framework with App Router
+- [React 19](https://react.dev/) - UI library
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Tailwind CSS 4](https://tailwindcss.com/) - Utility-first CSS framework
+- [Lucide React](https://lucide.dev/) - Beautiful icon library
+- [date-fns](https://date-fns.org/) - Date manipulation
+
+**Backend:**
+
+- [Supabase](https://supabase.com/) - Backend as a Service
+  - Authentication
+  - PostgreSQL Database
+  - Row Level Security (RLS)
+  - Real-time subscriptions
+
+**Dev Tools:**
+
+- ESLint - Code linting
+- PostCSS - CSS processing
+
+## 📁 Project Structure
+
+```
+mission-control/
+├── src/
+│   ├── app/
+│   │   ├── (app)/              # Protected app routes
+│   │   │   ├── employees/      # Employee management
+│   │   │   ├── profile/        # User profile
+│   │   │   └── tasks/          # Task management
+│   │   ├── (auth)/             # Authentication routes
+│   │   │   ├── login/
+│   │   │   ├── signup/
+│   │   │   └── reset-password/
+│   │   ├── layout.tsx          # Root layout
+│   │   └── page.tsx            # Landing page
+│   ├── components/
+│   │   ├── AddNewTask.tsx      # Task creation form
+│   │   ├── CompleteTask.tsx    # Task completion component
+│   │   ├── EmployeeCard.tsx    # Employee display card
+│   │   ├── Header.tsx          # Navigation header
+│   │   ├── Logout.tsx          # Logout button
+│   │   ├── RoleButton.tsx      # Role selector
+│   │   ├── Status.tsx          # Task status badge
+│   │   └── UserProvider.tsx    # User context provider
+│   ├── lib/
+│   │   ├── actions.ts          # Server actions
+│   │   ├── addTask.ts          # Task creation logic
+│   │   └── editProfile.ts      # Profile update logic
+│   └── utils/
+│       └── supabase/           # Supabase client configuration
+│           ├── client.ts
+│           ├── server.ts
+│           └── middleware.ts
+├── public/                     # Static assets
+├── .env.local                  # Environment variables
+├── package.json
+├── tsconfig.json
+├── tailwind.config.js
+└── next.config.ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔑 User Roles
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Admin
 
-## Learn More
+- Create and assign tasks to employees
+- View all tasks across the organization
+- Access employee management dashboard
+- Update task statuses
+- Full CRUD operations on tasks
 
-To learn more about Next.js, take a look at the following resources:
+### Employee
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- View assigned tasks
+- Update task progress
+- Mark tasks as complete
+- Edit personal profile
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📄 License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is licensed under the **MIT License**. Feel free to use, modify, and distribute this software.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 👨‍💻 Author
+
+**Abdallh El-Zorkany**
+
+- GitHub: [@AbdallhElzorkany](https://github.com/AbdallhElzorkany)
+- Twitter: [@AbdoElzorkany71](https://twitter.com/AbdoElzorkany71)
+- Website: [taskmaster-legend.vercel.app](https://taskmaster-legend.vercel.app/)
+
+---
+
+## 🙏 Acknowledgments
+
+- [Next.js](https://nextjs.org/) - React framework
+- [Supabase](https://supabase.com/) - Backend infrastructure
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [Lucide](https://lucide.dev/) - Icons
+- [Vercel](https://vercel.com/) - Hosting platform
+- [date-fns](https://date-fns.org/) - Date utilities
+---
+
+<div align="center">
+
+Made with ❤️ by [Abdallh Elzorkany](https://github.com/AbdallhElzorkany)
+
+⭐ Star this repo if you find it helpful!
+
+</div>

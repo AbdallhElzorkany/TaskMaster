@@ -1,9 +1,11 @@
 import Status from "@/components/Status";
 import { createClient } from "@/utils/supabase/server";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Edit } from "lucide-react";
 import { format } from "date-fns";
 import Link from "next/link";
 import { CompleteTask } from "@/components/CompleteTask";
+import DeleteTask from "@/components/DeleteTask";
+
 export default async function Task({
   params,
 }: {
@@ -15,10 +17,7 @@ export default async function Task({
     data: { user },
   } = await supabase.auth.getUser();
   const { data: task } = await supabase.from("tasks").select("*").eq("id", id);
-  const { data: assignee } = await supabase
-    .from("profiles")
-    .select("*")
-    .eq("id", task?.[0].assignee);
+  const { data: profiles } = await supabase.from("profiles").select("*");
   return (
     <div className="not-lg:w-11/12 lg:w-3/4 xl:w-3/5 mx-auto py-5">
       <div className="flex items-center justify-between">
@@ -34,10 +33,24 @@ export default async function Task({
         </Link>
       </div>
       <div className="mt-10 bg-white py-10 rounded-lg shadow-md">
-        <div className=" px-10 pb-5 gap-10 border-b-2 border-gray-200">
+        <div className=" px-10 pb-10 gap-10 border-b-2 border-gray-200 flex justify-between items-center">
           <h2 className="text-2xl font-bold text-gray-800">
             {task?.[0].title}
           </h2>
+
+          {profiles?.find((person) => person.id === user?.id).role ===
+            "admin" && (
+            <div className="flex items-center gap-2">
+              <Link
+                href={`/tasks/${task?.[0].id}/edit`}
+                className="bg-blue-700 hover:bg-blue-800 flex items-center p-2 rounded-sm not-md:text-sm text-white transition-colors font-semibold"
+                title="edit"
+              >
+                <Edit className="size-5" />
+              </Link>
+              <DeleteTask TId={task?.[0].id} />
+            </div>
+          )}
         </div>
         <div
           className={`flex gap-10 justify-between px-10 py-10 not-md:flex-col`}
@@ -49,12 +62,17 @@ export default async function Task({
             <p className="text-gray-600">{task?.[0].description}</p>
           </div>
           <div className="flex-2 flex flex-col gap-4">
-            {assignee?.[0].id !== user?.id && (
+            {user?.id !== task?.[0].assignee && (
               <div>
                 <h4 className="text-md font-bold text-gray-600 mb-1">
                   Assigned To
                 </h4>
-                <p>{assignee?.[0].fullname}</p>
+                <p>
+                  {
+                    profiles?.find((person) => person.id === task?.[0].assignee)
+                      ?.fullname
+                  }
+                </p>
               </div>
             )}
             <div>

@@ -10,14 +10,8 @@ import {
   LoaderCircle,
 } from "lucide-react";
 import { useState, useActionState } from "react";
-import { useRouter } from "next/navigation";
-import { useSession } from "@/components/UserProvider";
 export default function Login() {
-  const router = useRouter();
-  const session = useSession();
-  if (session) {
-    router.push("/");
-  }
+  
   const initialState: FormState = {
     errors: {},
   };

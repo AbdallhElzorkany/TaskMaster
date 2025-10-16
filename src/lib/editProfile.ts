@@ -10,7 +10,7 @@ export type FormState = {
 };
 export async function editProfile(
   prevState: FormState | undefined,
-  formData: FormData
+  formData: FormData,
 ) {
   const supabase = await createClient();
   const data = {
@@ -22,12 +22,9 @@ export async function editProfile(
     location: formData.get("location") as string,
   };
   const id = formData.get("id") as string;
-  console.log(id)
-  const { error } = await supabase
-    .from("profiles")
-    .update(data)
-    .eq("id", id);
-  if(error){
+
+  const { error } = await supabase.from("profiles").update(data).eq("id", id);
+  if (error) {
     return {
       errors: {
         message: id,

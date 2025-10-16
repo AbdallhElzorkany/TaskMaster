@@ -1,29 +1,30 @@
 "use client";
 import { useState, useActionState } from "react";
-import { addTask, FormState } from "@/lib/addTask";
-import { LoaderCircle, CalendarPlus } from "lucide-react";
-
-interface data {
+import { editTask, FormState } from "@/lib/editTask";
+import { LoaderCircle, Save } from "lucide-react";
+import { format } from "date-fns/fp";
+export type Task = {
   id: string;
-  fullname: string;
-}
-export default function AddNewTask({ data }: { data: data[] }) {
+  title: string;
+  description: string;
+  due_date: string;
+};
+export default function EditTask({ taskObj }: { taskObj: Task }) {
   const initialState: FormState = {
     errors: {
       message: "",
     },
   };
   const [task, setTask] = useState({
-    title: "",
-    description: "",
-    due_date: "",
-    assignee: "",
+    title: taskObj.title,
+    description: taskObj.description,
+    due_date: format("yyyy-MM-dd", taskObj.due_date),
   });
+
   const [formError, setFormError] = useState({
     title: true,
     description: true,
     due_date: true,
-    assignee: true,
   });
   function validateTitle() {
     if (task.title === "") {
@@ -64,20 +65,7 @@ export default function AddNewTask({ data }: { data: data[] }) {
       });
     }
   }
-  function validateAssignee() {
-    if (task.assignee === "") {
-      setFormError({
-        ...formError,
-        assignee: true,
-      });
-    } else {
-      setFormError({
-        ...formError,
-        assignee: false,
-      });
-    }
-  }
-  const [state, formAction, isPending] = useActionState(addTask, initialState);
+  const [state, formAction, isPending] = useActionState(editTask, initialState);
   return (
     <div className="px-5">
       <p
@@ -88,6 +76,7 @@ export default function AddNewTask({ data }: { data: data[] }) {
         {state.errors.message || "place holder"}
       </p>
       <form action={formAction} className="flex flex-col gap-y-10">
+        <input type="hidden" name="id" value={taskObj.id} />{" "}
         <div>
           <div>
             <label
@@ -129,7 +118,7 @@ export default function AddNewTask({ data }: { data: data[] }) {
               placeholder="Enter Task Description..."
             />
           </div>
-          <div className="grid grid-cols-2 not-md:grid-cols-1   gap-x-10">
+          <div>
             <div>
               <label
                 htmlFor="due_date"
@@ -149,39 +138,11 @@ export default function AddNewTask({ data }: { data: data[] }) {
                 className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-black w-full"
               />
             </div>
-            <div>
-              <label
-                htmlFor="assign_to"
-                className="text-md font-semibold text-gray-600 mb-1"
-              >
-                Assign To <span className="text-red-600">*</span>
-              </label>
-              <select
-                id="assign_to"
-                onChange={(e) => {
-                  setTask({ ...task, assignee: e.target.value });
-                }}
-                onBlur={validateAssignee}
-                value={task.assignee}
-                name="assignee"
-                className="bg-gray-100 px-4 py-2 rounded border border-gray-300 text-black w-full"
-              >
-                <option value="" disabled>
-                  Select Employee
-                </option>
-                {data.map((assignee) => (
-                  <option key={assignee.id} value={assignee.id}>
-                    {assignee.fullname}
-                  </option>
-                ))}
-              </select>
-            </div>
           </div>
         </div>
         <button
           disabled={
             isPending ||
-            formError.assignee ||
             formError.description ||
             formError.title ||
             formError.due_date
@@ -192,9 +153,9 @@ export default function AddNewTask({ data }: { data: data[] }) {
           {isPending ? (
             <LoaderCircle className="mr-2 animate-spin" />
           ) : (
-            <CalendarPlus className="mr-2" />
+            <Save className="mr-2" />
           )}
-          Add New Task
+          Update
         </button>
       </form>
     </div>

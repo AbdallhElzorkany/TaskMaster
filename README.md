@@ -164,7 +164,6 @@ This project is licensed under the **MIT License**. Feel free to use, modify, an
 **Abdallh El-Zorkany**
 
 - GitHub: [@AbdallhElzorkany](https://github.com/AbdallhElzorkany)
-- Twitter: [@AbdoElzorkany71](https://twitter.com/AbdoElzorkany71)
 - Website: [taskmaster-legend.vercel.app](https://taskmaster-legend.vercel.app/)
 
 ---

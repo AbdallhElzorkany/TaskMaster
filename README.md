@@ -10,7 +10,7 @@ A modern, full-stack task management application built with Next.js 15, React 19
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-38bdf8?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![Supabase](https://img.shields.io/badge/Supabase-2.50.2-3ecf8e?style=for-the-badge&logo=supabase)](https://supabase.com/)
 
-[Live Demo](https://taskmaster-legend.vercel.app/) · [Report Bug](https://github.com/AbdallhElzorkany/mission-control/issues) · [Request Feature](https://github.com/AbdallhElzorkany/mission-control/issues)
+[Live Demo](https://taskmaster-legend.vercel.app/) · [Report Bug](https://github.com/AbdallhElzorkany/TaskMaster/issues) · [Request Feature](https://github.com/AbdallhElzorkany/TaskMaster/issues)
 
 </div>
 

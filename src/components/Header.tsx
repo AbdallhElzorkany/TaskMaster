@@ -3,7 +3,6 @@ import {
   CircleUser,
   Users,
   UserPlusIcon,
-  Code2,
   User,
 } from "lucide-react";
 import { createClient } from "@/utils/supabase/server";

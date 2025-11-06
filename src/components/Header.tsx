@@ -66,18 +66,8 @@ export default async function Header() {
           </li>
         </ul>
       ) : (
-        <ul className="flex items-center w-1/2 justify-end gap-6 not-md:w-full not-md:justify-center ">
-          <li className="flex items-center gap-2">
-            <Link
-              title="features"
-              href={"#features"}
-              className="flex items-center gap-1 transition-colors hover:text-blue-700 p-2"
-            >
-              <Code2 className="size-5 text-blue-700" />
-              Features
-            </Link>
-          </li>
-          <li className="flex items-center gap-1">
+        <ul className="flex items-center w-1/2 justify-end gap-1 not-md:w-full not-md:justify-center ">
+          <li>
             <Link
               title="signup"
               href={"/signup"}
@@ -86,7 +76,9 @@ export default async function Header() {
               <UserPlusIcon className="size-5 text-blue-700" />
               Register
             </Link>
+          </li>
             /
+          <li>
             <Link
               title="login"
               href={"/login"}
